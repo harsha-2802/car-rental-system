@@ -5,7 +5,8 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server",
+    "start":"node server.js",
+    "server": "nodemon server.js",
     "data:import": "node seeder",
     "data:destroy": "node seeder -d",
     "client": "npm start --prefix ../client",
@@ -28,4 +29,7 @@
     "stripe": "^10.16.0",
     "uuid": "^9.0.0"
   }
+  "devDependencies":{
+    "nodemon":"^3.0.1"
+}
 }
