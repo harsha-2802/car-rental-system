@@ -18,7 +18,15 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_TEST)
 const app = express()
 const port = process.env.PORT || 5000
 
-app.use(cors())
+// ✅ FIXED CORS HERE
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // for local development
+    "https://car-rental-system-front-end.onrender.com" // your deployed frontend
+  ],
+  credentials: true
+}))
+
 app.use(json())
 app.use('/uploads', express.static('uploads'))
 
@@ -40,4 +48,5 @@ app.use(errorHandler)
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port: ${port}`)
 })
+
 
